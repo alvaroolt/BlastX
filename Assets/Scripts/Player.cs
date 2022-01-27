@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
     public Projectile laserPrefab;
     public float speed = 5.0f;
+    private bool _laserActive;
 
     private void Update()
     {
@@ -24,6 +26,31 @@ public class Player : MonoBehaviour
 
     private void Shoot()
     {
-        Instantiate(this.laserPrefab, this.transform.position, Quaternion.identity);
+        if (!_laserActive)
+        {
+            Projectile projectile = Instantiate(
+                this.laserPrefab,
+                this.transform.position,
+                Quaternion.identity
+            );
+            projectile.destroyed += LaserDestroyed;
+            _laserActive = true;
+        }
+    }
+
+    private void LaserDestroyed()
+    {
+        _laserActive = false;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (
+            other.gameObject.layer == LayerMask.NameToLayer("Invader")
+            || other.gameObject.layer == LayerMask.NameToLayer("Missile")
+        )
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 }

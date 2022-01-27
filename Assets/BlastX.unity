@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 418261807}
   - component: {fileID: 418261806}
   - component: {fileID: 418261805}
+  - component: {fileID: 418261808}
   m_Layer: 0
   m_Name: Bunker
   m_TagString: Untagged
@@ -232,6 +233,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &418261808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 418261804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b93533577a7c8804995720defded78eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &598154417
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,7 +257,7 @@ GameObject:
   - component: {fileID: 598154419}
   - component: {fileID: 598154418}
   - component: {fileID: 598154421}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -393,7 +406,32 @@ MonoBehaviour:
   - {fileID: 8992893279882754688, guid: 6b63dde2acf5d534984e1c9f7d80f446, type: 3}
   rows: 5
   columns: 11
-  speed: 1
+  speed:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.4
+      inSlope: 0.17704563
+      outSlope: 0.17704563
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.28307888
+    - serializedVersion: 3
+      time: 1
+      value: 1.6
+      inSlope: 3.335856
+      outSlope: 3.335856
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.15932149
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  missilePrefab: {fileID: 5548256743239276476, guid: 70ec3c3f01d76674085dd621599902a2, type: 3}
+  missileAttackRate: 1
 --- !u!4 &645775734
 Transform:
   m_ObjectHideFlags: 0
@@ -419,6 +457,7 @@ GameObject:
   - component: {fileID: 684875737}
   - component: {fileID: 684875736}
   - component: {fileID: 684875735}
+  - component: {fileID: 684875738}
   m_Layer: 0
   m_Name: Bunker
   m_TagString: Untagged
@@ -517,6 +556,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &684875738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684875734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b93533577a7c8804995720defded78eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &802197349
 GameObject:
   m_ObjectHideFlags: 0
@@ -528,6 +579,7 @@ GameObject:
   - component: {fileID: 802197352}
   - component: {fileID: 802197351}
   - component: {fileID: 802197350}
+  - component: {fileID: 802197353}
   m_Layer: 0
   m_Name: Bunker
   m_TagString: Untagged
@@ -626,6 +678,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &802197353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802197349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b93533577a7c8804995720defded78eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &813347246
 GameObject:
   m_ObjectHideFlags: 0
@@ -777,6 +841,7 @@ GameObject:
   - component: {fileID: 1315264766}
   - component: {fileID: 1315264765}
   - component: {fileID: 1315264764}
+  - component: {fileID: 1315264767}
   m_Layer: 0
   m_Name: Bunker
   m_TagString: Untagged
@@ -875,6 +940,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1315264767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1315264763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b93533577a7c8804995720defded78eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1346543724
 GameObject:
   m_ObjectHideFlags: 0
