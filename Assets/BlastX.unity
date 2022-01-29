@@ -245,6 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b93533577a7c8804995720defded78eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  splat: {fileID: 2800000, guid: a6a2d27059997af43b0160ed934f4eb2, type: 3}
 --- !u!1 &598154417
 GameObject:
   m_ObjectHideFlags: 0
@@ -367,8 +368,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f59250a1df024384c8107c4494c41162, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laserPrefab: {fileID: -707258239036255185, guid: 79186c75b60f53444be207d03de6c142, type: 3}
   speed: 5
+  laserPrefab: {fileID: -707258239036255185, guid: 79186c75b60f53444be207d03de6c142, type: 3}
 --- !u!1 &645775732
 GameObject:
   m_ObjectHideFlags: 0
@@ -404,34 +405,34 @@ MonoBehaviour:
   - {fileID: 515824229976372244, guid: 40e3489a79f76094d9644a90802dd692, type: 3}
   - {fileID: 8321530633491170232, guid: f8cfbc095f70f6341b7337ea88abb9bd, type: 3}
   - {fileID: 8992893279882754688, guid: 6b63dde2acf5d534984e1c9f7d80f446, type: 3}
-  rows: 5
-  columns: 11
   speed:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
-      value: 0.4
-      inSlope: 0.17704563
-      outSlope: 0.17704563
+      time: -0.01625824
+      value: 0.78400266
+      inSlope: 0.34753737
+      outSlope: 0.34753737
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.28307888
+      outWeight: 0.2955761
     - serializedVersion: 3
-      time: 1
-      value: 1.6
-      inSlope: 3.335856
-      outSlope: 3.335856
+      time: 1.0298615
+      value: 1.8669068
+      inSlope: 2.2989836
+      outSlope: 2.2989836
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.15932149
+      inWeight: 0.054166675
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  rows: 5
+  columns: 11
   missilePrefab: {fileID: 5548256743239276476, guid: 70ec3c3f01d76674085dd621599902a2, type: 3}
-  missileAttackRate: 1
+  missileSpawnRate: 1
 --- !u!4 &645775734
 Transform:
   m_ObjectHideFlags: 0
@@ -568,6 +569,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b93533577a7c8804995720defded78eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  splat: {fileID: 2800000, guid: a6a2d27059997af43b0160ed934f4eb2, type: 3}
 --- !u!1 &802197349
 GameObject:
   m_ObjectHideFlags: 0
@@ -690,6 +692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b93533577a7c8804995720defded78eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  splat: {fileID: 2800000, guid: a6a2d27059997af43b0160ed934f4eb2, type: 3}
 --- !u!1 &813347246
 GameObject:
   m_ObjectHideFlags: 0
@@ -952,6 +955,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b93533577a7c8804995720defded78eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  splat: {fileID: 2800000, guid: a6a2d27059997af43b0160ed934f4eb2, type: 3}
 --- !u!1 &1346543724
 GameObject:
   m_ObjectHideFlags: 0
@@ -963,6 +967,7 @@ GameObject:
   - component: {fileID: 1346543727}
   - component: {fileID: 1346543726}
   - component: {fileID: 1346543725}
+  - component: {fileID: 1346543728}
   m_Layer: 0
   m_Name: MysteryShip
   m_TagString: Untagged
@@ -1061,6 +1066,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1346543728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1346543724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0ef1e1d7a9ff534a9e501f33fc8809c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  cycleTime: 10
+  score: 300
 --- !u!1 &1393966667
 GameObject:
   m_ObjectHideFlags: 0

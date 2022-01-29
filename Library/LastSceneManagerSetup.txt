@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/BlastX.unity
+- path: Assets/Scenes/BlastX.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

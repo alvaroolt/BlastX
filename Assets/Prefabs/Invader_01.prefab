@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2443069049616956255, guid: 8d70d1421b13fe84dae2340cd0c23770, type: 3}
+      propertyPath: animationSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4906628993361799531, guid: 8d70d1421b13fe84dae2340cd0c23770, type: 3}
       propertyPath: m_Size.x
       value: 1
@@ -100,6 +104,10 @@ PrefabInstance:
       value: Invader_01
       objectReference: {fileID: 0}
     - target: {fileID: 9090241791506494800, guid: 8d70d1421b13fe84dae2340cd0c23770, type: 3}
+      propertyPath: score
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 9090241791506494800, guid: 8d70d1421b13fe84dae2340cd0c23770, type: 3}
       propertyPath: animationSprites.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -111,5 +119,28 @@ PrefabInstance:
       propertyPath: animationSprites.Array.data[1]
       value: 
       objectReference: {fileID: 21300000, guid: 695deb1fbb284dd46be3ecd6ad6b2c49, type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2443069049616956255, guid: 8d70d1421b13fe84dae2340cd0c23770, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8d70d1421b13fe84dae2340cd0c23770, type: 3}
+--- !u!1 &8927920728817072017 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8722472936863430721, guid: 8d70d1421b13fe84dae2340cd0c23770, type: 3}
+  m_PrefabInstance: {fileID: 210027018439299024}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-1351601131490893385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8927920728817072017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b17214c247e59114fa8bf5acaa06186b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationSprites:
+  - {fileID: 21300000, guid: b5f20663b636d4b4eb010e7fb8012499, type: 3}
+  - {fileID: 21300000, guid: 695deb1fbb284dd46be3ecd6ad6b2c49, type: 3}
+  animationTime: 1
+  score: 10
