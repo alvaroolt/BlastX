@@ -5,7 +5,7 @@ public class Invader : MonoBehaviour
 {
     public SpriteRenderer spriteRenderer { get; private set; }
     public Sprite[] animationSprites = new Sprite[0];
-    public float animationTime = 1f;
+    public float animationTime = 0.1f;
     public int animationFrame { get; private set; }
     public int score = 10;
     public System.Action<Invader> killed;
@@ -18,24 +18,26 @@ public class Invader : MonoBehaviour
 
     private void Start()
     {
-        InvokeRepeating(nameof(AnimateSprite), animationTime, animationTime);
+
     }
 
     private void AnimateSprite()
     {
         animationFrame++;
-
         // Loop back to the start if the animation frame exceeds the length
-        if (animationFrame >= animationSprites.Length) {
-            animationFrame = 0;
+        if (animationFrame >= animationSprites.Length)
+        {
+            // animationFrame = 0;
+            // return;
         }
-
         spriteRenderer.sprite = animationSprites[animationFrame];
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Laser")) {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Laser"))
+        {
+            // InvokeRepeating(nameof(AnimateSprite), 0, animationTime);
             killed?.Invoke(this);
         }
     }

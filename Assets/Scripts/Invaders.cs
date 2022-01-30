@@ -16,7 +16,7 @@ public class Invaders : MonoBehaviour
 
     [Header("Grid")]
     public int rows = 5;
-    public int columns = 11;
+    public int columns = 5;
 
     [Header("Missiles")]
     public Projectile missilePrefab;
@@ -32,8 +32,8 @@ public class Invaders : MonoBehaviour
             float width = 2f * (columns - 1);
             float height = 2f * (rows - 1);
 
-            Vector2 centerOffset = new Vector2(-width * 0.5f, -height * 0.5f);
-            Vector3 rowPosition = new Vector3(centerOffset.x, (2f * i) + centerOffset.y, 0f);
+            Vector2 centerOffset = new Vector2(-width * 1f, -height * 1f);
+            Vector3 rowPosition = new Vector3(centerOffset.x, (2.5f * i) + centerOffset.y, 0f);
 
             for (int j = 0; j < columns; j++)
             {
@@ -43,7 +43,7 @@ public class Invaders : MonoBehaviour
 
                 // Calculate and set the position of the invader in the row
                 Vector3 position = rowPosition;
-                position.x += 2f * j;
+                position.x += 4f * j;
                 invader.transform.localPosition = position;
             }
         }

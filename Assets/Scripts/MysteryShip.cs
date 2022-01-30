@@ -21,11 +21,11 @@ public class MysteryShip : MonoBehaviour
 
         // Offset the destination by a unit so the ship is fully out of sight
         Vector3 left = transform.position;
-        left.x = leftEdge.x - 1f;
+        left.x = leftEdge.x - 5f;
         leftDestination = left;
 
         Vector3 right = transform.position;
-        right.x = rightEdge.x + 1f;
+        right.x = rightEdge.x + 5f;
         rightDestination = right;
 
         transform.position = leftDestination;
@@ -34,13 +34,17 @@ public class MysteryShip : MonoBehaviour
 
     private void Update()
     {
-        if (!spawned) {
+        if (!spawned)
+        {
             return;
         }
 
-        if (direction == 1) {
+        if (direction == 1)
+        {
             MoveRight();
-        } else {
+        }
+        else
+        {
             MoveLeft();
         }
     }
@@ -48,8 +52,10 @@ public class MysteryShip : MonoBehaviour
     private void MoveRight()
     {
         transform.position += Vector3.right * speed * Time.deltaTime;
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, 270));
 
-        if (transform.position.x >= rightDestination.x) {
+        if (transform.position.x >= rightDestination.x)
+        {
             Despawn();
         }
     }
@@ -57,8 +63,10 @@ public class MysteryShip : MonoBehaviour
     private void MoveLeft()
     {
         transform.position += Vector3.left * speed * Time.deltaTime;
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, 90));
 
-        if (transform.position.x <= leftDestination.x) {
+        if (transform.position.x <= leftDestination.x)
+        {
             Despawn();
         }
     }
@@ -67,9 +75,12 @@ public class MysteryShip : MonoBehaviour
     {
         direction *= -1;
 
-        if (direction == 1) {
+        if (direction == 1)
+        {
             transform.position = leftDestination;
-        } else {
+        }
+        else
+        {
             transform.position = rightDestination;
         }
 
@@ -80,9 +91,12 @@ public class MysteryShip : MonoBehaviour
     {
         spawned = false;
 
-        if (direction == 1) {
+        if (direction == 1)
+        {
             transform.position = rightDestination;
-        } else {
+        }
+        else
+        {
             transform.position = leftDestination;
         }
 
@@ -95,7 +109,8 @@ public class MysteryShip : MonoBehaviour
         {
             Despawn();
 
-            if (killed != null) {
+            if (killed != null)
+            {
                 killed.Invoke(this);
             }
         }

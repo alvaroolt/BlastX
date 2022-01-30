@@ -34,7 +34,8 @@ public sealed class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (lives <= 0 && Input.GetKeyDown(KeyCode.Return)) {
+        if (lives <= 0 && Input.GetKeyDown(KeyCode.Return))
+        {
             NewGame();
         }
     }
@@ -53,7 +54,8 @@ public sealed class GameManager : MonoBehaviour
         invaders.ResetInvaders();
         invaders.gameObject.SetActive(true);
 
-        for (int i = 0; i < bunkers.Length; i++) {
+        for (int i = 0; i < bunkers.Length; i++)
+        {
             bunkers[i].ResetBunker();
         }
 
@@ -72,6 +74,11 @@ public sealed class GameManager : MonoBehaviour
     {
         gameOverUI.SetActive(true);
         invaders.gameObject.SetActive(false);
+        mysteryShip.gameObject.SetActive(false);
+        for (int i = 0; i < bunkers.Length; i++)
+        {
+            bunkers[i].gameObject.SetActive(false);
+        }
     }
 
     private void SetScore(int score)
@@ -92,9 +99,12 @@ public sealed class GameManager : MonoBehaviour
 
         player.gameObject.SetActive(false);
 
-        if (lives > 0) {
+        if (lives > 0)
+        {
             Invoke(nameof(NewRound), 1f);
-        } else {
+        }
+        else
+        {
             GameOver();
         }
     }
@@ -103,7 +113,8 @@ public sealed class GameManager : MonoBehaviour
     {
         SetScore(score + invader.score);
 
-        if (invaders.AmountKilled == invaders.TotalAmount) {
+        if (invaders.AmountKilled == invaders.TotalAmount)
+        {
             NewRound();
         }
     }
