@@ -15,8 +15,8 @@ public class Invaders : MonoBehaviour
     public float PercentKilled => (float)AmountKilled / (float)TotalAmount;
 
     [Header("Grid")]
-    public int rows = 5;
-    public int columns = 5;
+    public int rows = 5; //filas de invasores
+    public int columns = 5; //columnas de invasores
 
     [Header("Missiles")]
     public Projectile missilePrefab;
@@ -26,7 +26,7 @@ public class Invaders : MonoBehaviour
     {
         initialPosition = transform.position;
 
-        // Form the grid of invaders
+        // Grid de invasores
         for (int i = 0; i < rows; i++)
         {
             float width = 2f * (columns - 1);
@@ -37,11 +37,11 @@ public class Invaders : MonoBehaviour
 
             for (int j = 0; j < columns; j++)
             {
-                // Create an invader and parent it to this transform
+                // Crea al invasor y lo emparenta al transform
                 Invader invader = Instantiate(prefabs[i], transform);
                 invader.killed += OnInvaderKilled;
 
-                // Calculate and set the position of the invader in the row
+                // Calcula la posición del invasor en la fila
                 Vector3 position = rowPosition;
                 position.x += 4f * j;
                 invader.transform.localPosition = position;
@@ -58,20 +58,22 @@ public class Invaders : MonoBehaviour
     {
         int amountAlive = AmountAlive;
 
-        // No missiles should spawn when no invaders are alive
-        if (amountAlive == 0) {
+        // Comprueba que no spawneen misiles si no hay invasores vivos
+        if (amountAlive == 0)
+        {
             return;
         }
 
         foreach (Transform invader in transform)
         {
-            // Any invaders that are killed cannot shoot missiles
-            if (!invader.gameObject.activeInHierarchy) {
+            // impide que invasores muertos disparen misiles
+            if (!invader.gameObject.activeInHierarchy)
+            {
                 continue;
             }
 
-            // Random chance to spawn a missile based upon how many invaders are
-            // alive (the more invaders alive the lower the chance)
+            // Posibilidad aleatoria de generar un misil en función de cuántos invasores hay vivos
+            // (cuanto más invasores estén vivos, menor será la posibilidad)
             if (Random.value < (1f / (float)amountAlive))
             {
                 Instantiate(missilePrefab, invader.position, Quaternion.identity);
@@ -82,31 +84,25 @@ public class Invaders : MonoBehaviour
 
     private void Update()
     {
-        // Evaluate the speed of the invaders based on how many have been killed
+        // Evalua la velocidad de los invasores según cuántos hayan muerto
         float speed = this.speed.Evaluate(PercentKilled);
         transform.position += direction * speed * Time.deltaTime;
 
-        // Transform the viewport to world coordinates so we can check when the
-        // invaders reach the edge of the screen
+        // transforma el viewport a coordenadas para comprobar cuando los invasores alcanzan el límite de la pantalla
         Vector3 leftEdge = Camera.main.ViewportToWorldPoint(Vector3.zero);
         Vector3 rightEdge = Camera.main.ViewportToWorldPoint(Vector3.right);
 
-        // The invaders will advance to the next row after reaching the edge of
-        // the screen
+        // los invasores avanzan una fila al alcanzar el limite de la pantalla
         foreach (Transform invader in transform)
         {
-            // Skip any invaders that have been killed
-            if (!invader.gameObject.activeInHierarchy) {
+            // omite a los invasores muertos
+            if (!invader.gameObject.activeInHierarchy)
+            {
                 continue;
             }
 
-            // Check the left edge or right edge based on the current direction
-            if (direction == Vector3.right && invader.position.x >= (rightEdge.x - 1f))
-            {
-                AdvanceRow();
-                break;
-            }
-            else if (direction == Vector3.left && invader.position.x <= (leftEdge.x + 1f))
+            // si tocan el borde, avanzan una fila
+            if ((direction == Vector3.right && invader.position.x >= (rightEdge.x - 1.5f)) || (direction == Vector3.left && invader.position.x <= (leftEdge.x + 1.5f)))
             {
                 AdvanceRow();
                 break;
@@ -116,15 +112,16 @@ public class Invaders : MonoBehaviour
 
     private void AdvanceRow()
     {
-        // Flip the direction the invaders are moving
+        // cambia la direccion de los invasores
         direction = new Vector3(-direction.x, 0f, 0f);
 
-        // Move the entire grid of invaders down a row
+        // mueve a todos los invasores una fila mas abajo
         Vector3 position = transform.position;
         position.y -= 1f;
         transform.position = position;
     }
 
+    //desactiva al invasor y suma 1 a la cuenta de invasores eliminados
     private void OnInvaderKilled(Invader invader)
     {
         invader.gameObject.SetActive(false);
@@ -132,13 +129,15 @@ public class Invaders : MonoBehaviour
         killed(invader);
     }
 
+    //resetea el spawn de invasores
     public void ResetInvaders()
     {
         AmountKilled = 0;
         direction = Vector3.right;
         transform.position = initialPosition;
 
-        foreach (Transform invader in transform) {
+        foreach (Transform invader in transform)
+        {
             invader.gameObject.SetActive(true);
         }
     }

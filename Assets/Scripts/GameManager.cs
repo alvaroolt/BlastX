@@ -17,6 +17,7 @@ public sealed class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        //asignacion de variables
         player = FindObjectOfType<Player>();
         invaders = FindObjectOfType<Invaders>();
         mysteryShip = FindObjectOfType<MysteryShip>();
@@ -25,6 +26,7 @@ public sealed class GameManager : MonoBehaviour
 
     private void Start()
     {
+        //actualiza la puntuación y las vidas
         player.killed += OnPlayerKilled;
         mysteryShip.killed += OnMysteryShipKilled;
         invaders.killed += OnInvaderKilled;
@@ -34,12 +36,14 @@ public sealed class GameManager : MonoBehaviour
 
     private void Update()
     {
+        //si el jugador se queda sin vidas, reinicia la partida
         if (lives <= 0 && Input.GetKeyDown(KeyCode.Return))
         {
             NewGame();
         }
     }
 
+    //nuevo juego
     private void NewGame()
     {
         gameOverUI.SetActive(false);
@@ -49,6 +53,7 @@ public sealed class GameManager : MonoBehaviour
         NewRound();
     }
 
+    //si mueren todos los invasores, se crea otra ronda
     private void NewRound()
     {
         invaders.ResetInvaders();
@@ -62,6 +67,7 @@ public sealed class GameManager : MonoBehaviour
         Respawn();
     }
 
+    //reaparicion del jugador
     private void Respawn()
     {
         Vector3 position = player.transform.position;
@@ -70,6 +76,7 @@ public sealed class GameManager : MonoBehaviour
         player.gameObject.SetActive(true);
     }
 
+    //se acaba la partida, oculta los elementos del juego y muestra el menu de Game Over
     private void GameOver()
     {
         gameOverUI.SetActive(true);
@@ -81,18 +88,21 @@ public sealed class GameManager : MonoBehaviour
         }
     }
 
+    //asigna la puntuacion
     private void SetScore(int score)
     {
         this.score = score;
         scoreText.text = score.ToString().PadLeft(4, '0');
     }
 
+    //asigna las vidas
     private void SetLives(int lives)
     {
         this.lives = Mathf.Max(lives, 0);
         livesText.text = lives.ToString();
     }
 
+    //algoritmo del jugador al ser impactado por un misil
     private void OnPlayerKilled()
     {
         SetLives(lives - 1);
@@ -109,6 +119,7 @@ public sealed class GameManager : MonoBehaviour
         }
     }
 
+    //asigna los puntos de los invasores eliminados y genera nuevas rondas si todos son eliminados
     private void OnInvaderKilled(Invader invader)
     {
         SetScore(score + invader.score);
@@ -119,6 +130,7 @@ public sealed class GameManager : MonoBehaviour
         }
     }
 
+    //asigna los puntos de las naves misteriosas
     private void OnMysteryShipKilled(MysteryShip mysteryShip)
     {
         SetScore(score + mysteryShip.score);

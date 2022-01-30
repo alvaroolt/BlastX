@@ -29,6 +29,7 @@ public class Projectile : MonoBehaviour
     {
         Bunker bunker = other.gameObject.GetComponent<Bunker>();
 
+        //feature mas adelante
         if (bunker == null || bunker.CheckCollision(collider, transform.position)) {
             Destroy(gameObject);
         }

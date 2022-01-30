@@ -14,12 +14,11 @@ public class MysteryShip : MonoBehaviour
 
     private void Start()
     {
-        // Transform the viewport to world coordinates so we can set the mystery
-        // ship's destination points
+        //transforma los viewport a coordenadas para establecer el destino de la nave misteriosa
         Vector3 leftEdge = Camera.main.ViewportToWorldPoint(Vector3.zero);
         Vector3 rightEdge = Camera.main.ViewportToWorldPoint(Vector3.right);
 
-        // Offset the destination by a unit so the ship is fully out of sight
+        //se le asigna un valor para que este fuera de la pantalla
         Vector3 left = transform.position;
         left.x = leftEdge.x - 5f;
         leftDestination = left;
@@ -49,6 +48,7 @@ public class MysteryShip : MonoBehaviour
         }
     }
 
+    //se desplaza y se gira la nave hacia la derecha
     private void MoveRight()
     {
         transform.position += Vector3.right * speed * Time.deltaTime;
@@ -60,6 +60,7 @@ public class MysteryShip : MonoBehaviour
         }
     }
 
+    //se desplaza y se gira la nave hacia la izquierda
     private void MoveLeft()
     {
         transform.position += Vector3.left * speed * Time.deltaTime;
@@ -103,6 +104,7 @@ public class MysteryShip : MonoBehaviour
         Invoke(nameof(Spawn), cycleTime);
     }
 
+    //si le alcanza un laser, despawnea y se le asigna los puntos al jugador
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Laser"))

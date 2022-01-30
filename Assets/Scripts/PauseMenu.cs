@@ -6,11 +6,14 @@ public class PauseMenu : MonoBehaviour
 {
     [SerializeField] GameObject pauseMenu;
 
-    public void Update() {
-        if (Input.GetKey(KeyCode.P) || Input.GetKey(KeyCode.Escape)) {
+    public void Update()
+    {
+        if (Input.GetKey(KeyCode.P) || Input.GetKey(KeyCode.Escape))
+        {
             Pause();
         }
-        if (Input.GetKey(KeyCode.Space)) {
+        if (Input.GetKey(KeyCode.Space))
+        {
             Resume();
         }
     }
@@ -27,9 +30,9 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    public void Home(int sceneID)
-    {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene(sceneID);
-    }
+    // public void Home(int sceneID)
+    // {
+    //     Time.timeScale = 1f;
+    //     SceneManager.LoadScene(sceneID);
+    // }
 }

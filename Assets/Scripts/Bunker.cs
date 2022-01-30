@@ -1,9 +1,11 @@
 using UnityEngine;
 
+//El atributo RequireComponent agrega automáticamente los componentes necesarios como dependencias.
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(BoxCollider2D))]
 public class Bunker : MonoBehaviour
 {
+    //zona de impacto y rotura del bunker
     public Texture2D splat;
     public Texture2D originalTexture { get; private set; }
     public SpriteRenderer spriteRenderer { get; private set; }
@@ -20,8 +22,7 @@ public class Bunker : MonoBehaviour
 
     public void ResetBunker()
     {
-        // Each bunker needs a unique instance of the sprite texture since we
-        // will be modifying it at the source
+        //cada bunker necesita la instancia del sprite ya que se modificará
         CopyTexture(originalTexture);
 
         gameObject.SetActive(true);
@@ -42,21 +43,20 @@ public class Bunker : MonoBehaviour
 
     public bool CheckPoint(Vector3 hitPoint, out int px, out int py)
     {
-        // Transform the point from world space to local space
+        //transforma el punto del espacio en espacio local
         Vector3 localPoint = transform.InverseTransformPoint(hitPoint);
 
-        // Offset the point to the corner of the object instead of the center so
-        // we can transform to uv coordinates
+        //desplaza el punto a la esquina del objeto en lugar del centro, para usarlo como coordenadas
         localPoint.x += collider.size.x / 2;
         localPoint.y += collider.size.y / 2;
 
         Texture2D texture = spriteRenderer.sprite.texture;
 
-        // Transform the point from local space to uv coordinates
+        //transforma el punto local a coordenadas
         px = (int)((localPoint.x / collider.size.x) * texture.width);
         py = (int)((localPoint.y / collider.size.y) * texture.height);
 
-        // Return true if the pixel is not empty (not transparent)
+        //devuelve true si el pixel no esta vacio
         return texture.GetPixel(px, py).a != 0f;
     }
 
@@ -65,31 +65,28 @@ public class Bunker : MonoBehaviour
         int px;
         int py;
 
-        // Only proceed if the point maps to a non-empty pixel
-        if (!CheckPoint(hitPoint, out px, out py)) {
+        //entra en el if si el punto toca un pixel no vacio
+        if (!CheckPoint(hitPoint, out px, out py))
+        {
             return false;
         }
 
         Texture2D texture = spriteRenderer.sprite.texture;
 
-        // Offset the point by half the size of the splat texture so the splat
-        // is centered around the hit point
+        //desplaza el punto a la mitad del tamaño del splat, para que el splat "golpee" en el centro del golpe
         px -= splat.width / 2;
         py -= splat.height / 2;
 
         int startX = px;
 
-        // Loop through all of the coordinates in the splat texture so we can
-        // alpha mask the bunker texture with the splat texture
+        //recorre todas las coordenadas de la textura splat para sobreponerla a la del bunker
         for (int y = 0; y < splat.height; y++)
         {
             px = startX;
 
             for (int x = 0; x < splat.width; x++)
             {
-                // Multiply the alpha of the splat pixel with the alpha of the
-                // bunker texture to make it look like parts of the bunker are
-                // being destroyed
+                //multiplica el pixel del splat con el del bunker para que parezca que se ha destruido
                 Color pixel = texture.GetPixel(px, py);
                 pixel.a *= splat.GetPixel(x, y).a;
                 texture.SetPixel(px, py, pixel);
@@ -119,7 +116,8 @@ public class Bunker : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Invader")) {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Invader"))
+        {
             gameObject.SetActive(false);
         }
     }

@@ -938,8 +938,10 @@ MonoBehaviour:
   - {fileID: 7409688110167891311, guid: d908398f12e04bb4d9d558e36d067816, type: 3}
   - {fileID: 7409688110167891311, guid: d908398f12e04bb4d9d558e36d067816, type: 3}
   speed:
+    serializedVersion: 2
     m_Curve:
-    - time: 0.0023822784
+    - serializedVersion: 3
+      time: 0.0023822784
       value: 2.8379211
       inSlope: 0
       outSlope: 0
@@ -947,7 +949,8 @@ MonoBehaviour:
       weightedMode: 0
       inWeight: 0
       outWeight: 0
-    - time: 2.0230255
+    - serializedVersion: 3
+      time: 2.0230255
       value: 12.081863
       inSlope: 11.4489565
       outSlope: 11.4489565
@@ -958,9 +961,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  <direction>k__BackingField: {x: 1, y: 0, z: 0}
-  <initialPosition>k__BackingField: {x: 0, y: 0, z: 0}
-  <AmountKilled>k__BackingField: 0
   rows: 5
   columns: 5
   missilePrefab: {fileID: 5548256743239276476, guid: 70ec3c3f01d76674085dd621599902a2, type: 3}

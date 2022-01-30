@@ -1,5 +1,6 @@
 using UnityEngine;
 
+//El atributo RequireComponent agrega automáticamente los componentes necesarios como dependencias.
 [RequireComponent(typeof(SpriteRenderer))]
 public class Invader : MonoBehaviour
 {
@@ -16,15 +17,11 @@ public class Invader : MonoBehaviour
         spriteRenderer.sprite = animationSprites[0];
     }
 
-    private void Start()
-    {
-
-    }
-
+    //desactivado
     private void AnimateSprite()
     {
         animationFrame++;
-        // Loop back to the start if the animation frame exceeds the length
+        // si sale del array, vuelve al estado inicial
         if (animationFrame >= animationSprites.Length)
         {
             // animationFrame = 0;
@@ -33,6 +30,7 @@ public class Invader : MonoBehaviour
         spriteRenderer.sprite = animationSprites[animationFrame];
     }
 
+    //si el invasor es alcanzado por un laser, se invoca a killed
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Laser"))

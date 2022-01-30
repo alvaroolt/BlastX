@@ -11,29 +11,35 @@ public class Player : MonoBehaviour
     {
         Vector3 position = transform.position;
 
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
+        //el jugador se desplaza hacia la derecha cuando se pulsa la A o la flecha derecha
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        {
             position.x -= speed * Time.deltaTime;
         }
-        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
+        //el jugador se desplaza hacia la izquierda cuando se pulsa la D o la flecha izquierda
+        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        {
             position.x += speed * Time.deltaTime;
         }
 
+        //asigna los limites del jugador por los que se puede desplazar en la pantalla
         Vector3 leftEdge = Camera.main.ViewportToWorldPoint(Vector3.zero);
         Vector3 rightEdge = Camera.main.ViewportToWorldPoint(Vector3.right);
 
-        // Clamp the position of the character so they do not go out of bounds
         position.x = Mathf.Clamp(position.x, leftEdge.x, rightEdge.x);
+
+        //desplaza al jugador
         transform.position = position;
 
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) {
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+        {
             Shoot();
         }
     }
 
     private void Shoot()
     {
-        // Only one laser can be active at a given time so first check that
-        // there is not already an active laser
+        //comprueba que solo haya un laser activo al mismo tiempo
         if (!laserActive)
         {
             laserActive = true;
@@ -53,7 +59,8 @@ public class Player : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Missile") ||
             other.gameObject.layer == LayerMask.NameToLayer("Invader"))
         {
-            if (killed != null) {
+            if (killed != null)
+            {
                 killed.Invoke();
             }
         }
